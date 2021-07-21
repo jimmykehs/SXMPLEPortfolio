@@ -1,0 +1,18 @@
+.Social-Media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.Social-Media img {
+  height: 50px;
+  width: 50px;
+}
+/*# sourceMappingURL=Contact.css.map */

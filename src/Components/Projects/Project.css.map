@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,MAAM,EAAE,MAAM;EACd,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,IAAI;CAYjB;;AAfD,AAKE,aALW,CAKX,gBAAgB,CAAC;EACf,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;CAOhB;;AAdH,AAQI,aARS,CAKX,gBAAgB,CAGd,GAAG,CAAC;EACF,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,GAAG;EACX,aAAa,EAAE,IAAI;CACpB",
+    "sources": [
+        "Project.scss"
+    ],
+    "names": [],
+    "file": "Project.css"
+}

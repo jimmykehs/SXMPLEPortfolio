@@ -1,0 +1,11 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.Section {
+  padding: 15px;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
