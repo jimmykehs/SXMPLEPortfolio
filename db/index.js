@@ -109,7 +109,7 @@ async function createMember(
     throw error;
   }
 }
-async function createProject(projectData) {
+async function createProject(projectData, members = []) {
   try {
     const {
       rows: [newProject],
@@ -121,8 +121,12 @@ async function createProject(projectData) {
         `,
       Object.values(projectData)
     );
-    console.log(newProject);
-    return newProject;
+    members.forEach(async (member) => {
+      console.log(member);
+      await addProjectMember(newProject.id, member);
+    });
+    const allProjects = await getAllProjects();
+    return allProjects;
   } catch (error) {
     console.log("Couldn't create project", error);
     throw error;

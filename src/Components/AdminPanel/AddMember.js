@@ -9,6 +9,7 @@ const AddMember = ({ token }) => {
   const [success, setSuccess] = useState("");
   return (
     <div className="Create-Member-Form">
+      <h1>Add Team Members</h1>
       <p>{success}</p>
       <Form
         onSubmit={(e) => {
