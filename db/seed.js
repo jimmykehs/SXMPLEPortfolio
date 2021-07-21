@@ -5,12 +5,14 @@ const {
   createAdmin,
   createProject,
   createMember,
+  addProjectMedia,
 } = require("./index");
 
 async function buildTables() {
   try {
     console.log("START: Dropping tables");
     await client.query(`
+    DROP TABLE IF EXISTS project_media;
     DROP TABLE IF EXISTS project_members;
     DROP TABLE IF EXISTS projects;
     DROP TABLE IF EXISTS members;
@@ -47,6 +49,11 @@ async function buildTables() {
         "project_id" INTEGER REFERENCES projects(id),
         "member_id" INTEGER REFERENCES members(id),
         UNIQUE ("project_id", "member_id")
+    );
+
+    CREATE TABLE project_media(
+      "project_id" INTEGER REFERENCES projects(id),
+      media_path VARCHAR(255) NOT NULL
     );
    `);
     console.log("DONE: Create tables");
@@ -125,9 +132,16 @@ async function seedData() {
     const FigureH8Members = [1, 2, 4, 6, 7, 8, 10];
     const WorkedToDeathMembers = [1, 2, 3, 4, 6, 7, 8, 10];
 
-    RelativityMembers.forEach((id) => addProjectMember(1, id));
-    FigureH8Members.forEach((id) => addProjectMember(2, id));
-    WorkedToDeathMembers.forEach((id) => addProjectMember(3, id));
+    RelativityMembers.forEach(async (id) => await addProjectMember(1, id));
+    FigureH8Members.forEach(async (id) => await addProjectMember(2, id));
+    WorkedToDeathMembers.forEach(async (id) => await addProjectMember(3, id));
+
+    addProjectMedia(1, "https://via.placeholder.com/300x300");
+    addProjectMedia(
+      1,
+      "https://media1.tenor.com/images/a77a9dcd5dbfed55a8826c902d4102fe/tenor.gif?itemid=20564230"
+    );
+    addProjectMedia(1, "https://www.youtube.com/embed/b3_lVSrPB6w");
   } catch (error) {
     console.log(error);
   }

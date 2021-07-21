@@ -1,7 +1,25 @@
 .Project-Card {
-  margin: 10px 0;
+  width: 95vw;
+  margin: 10px;
   padding: 10px;
   background: #eee;
+
+  .Project-Media {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 300px;
+    overflow-x: scroll;
+    img,
+    iframe {
+      height: 275px;
+      width: 275px;
+      margin: 10px;
+      object-fit: fill;
+      object-position: top;
+      border-radius: 5px;
+    }
+  }
 
   .Project-Members {
     display: flex;

@@ -19,11 +19,23 @@ async function getAllProjects() {
         JOIN project_members ON members.id = project_members."member_id";
     `);
 
+    const { rows: media } = await client.query(`
+      SELECT project_media.*
+      FROM project_media
+      JOIN projects ON project_media."project_id" = projects.id;
+    `);
+
     projects.map((project) => {
       project.members = [];
+      project.media = [];
       members.map((member) => {
         if (member.project_id === project.id) {
           project.members.push(member);
+        }
+      });
+      media.map((media) => {
+        if (media.project_id === project.id) {
+          project.media.push(media.media_path);
         }
       });
     });
@@ -31,6 +43,25 @@ async function getAllProjects() {
     return projects;
   } catch (error) {
     console.log(error);
+  }
+}
+
+async function getAdminByUsername(username) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+  SELECT * FROM admins
+  WHERE username = ($1);
+  `,
+      [username]
+    );
+
+    return user;
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 }
 
@@ -57,7 +88,7 @@ async function createAdmin({ username, password }) {
 }
 async function createMember(
   { name, position = "Team Member" },
-  image_path = "Assets/DefaultProfile.jpg"
+  image_path = "Assets/UserImages/DefaultProfile.jpg"
 ) {
   try {
     console.log(image_path);
@@ -97,6 +128,7 @@ async function createProject(projectData) {
     throw error;
   }
 }
+
 async function addProjectMember(projectID, memberID) {
   const {
     rows: [addedMember],
@@ -110,12 +142,29 @@ async function addProjectMember(projectID, memberID) {
   return addedMember;
 }
 
+async function addProjectMedia(projectID, media_path) {
+  const projectMedia = await client.query(
+    `
+    INSERT INTO project_media("project_id", media_path)
+    VALUES ($1, $2)
+    RETURNING *;
+  
+  
+  `,
+    [projectID, media_path]
+  );
+
+  return projectMedia;
+}
+
 module.exports = {
+  addProjectMedia,
   addProjectMember,
   client,
   createAdmin,
   createMember,
   createProject,
+  getAdminByUsername,
   getAllMembers,
   getAllProjects,
 };
