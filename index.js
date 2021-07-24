@@ -13,6 +13,9 @@ app.use(morgan("dev"));
 const cors = require("cors");
 app.use(cors());
 
+app.get("/", (req, res, next) => {
+  res.send("Hey");
+});
 app.use("/api", require("./Routes"));
 
 app.listen(PORT, () => {
