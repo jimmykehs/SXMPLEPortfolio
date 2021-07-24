@@ -10,6 +10,7 @@ const AddProject = ({ token, members }) => {
   const [audio, setAudio] = useState("");
   const [date, setDate] = useState("");
   const [selectedMembers, setSelectedMembers] = useState([]);
+  const [success, setSuccess] = useState("");
   function handleCheck(event) {
     const newSelectedMembers = [...selectedMembers];
     if (event.target.checked) {
@@ -34,13 +35,17 @@ const AddProject = ({ token, members }) => {
         },
         members: selectedMembers,
       })
-      .then(({ data }) => {
-        console.log(data);
+      .then(() => {
+        setSuccess("Project added!");
+      })
+      .catch((err) => {
+        setSuccess(err);
       });
   }
   return (
     <div className="Create-Project-Form">
       <h1>Add Project</h1>
+      <p>{success}</p>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
@@ -56,6 +61,7 @@ const AddProject = ({ token, members }) => {
               onChange={(e) => {
                 setName(e.target.value);
               }}
+              required
             />
           </Form.Group>
         </Row>
@@ -67,6 +73,7 @@ const AddProject = ({ token, members }) => {
           onChange={(e) => {
             setDesc(e.target.value);
           }}
+          required
         />
         <Row className="mb-3">
           <Form.Group as={Col} className="mb-3" controlId="formGridAddress1">
@@ -77,6 +84,7 @@ const AddProject = ({ token, members }) => {
               onChange={(e) => {
                 setEngine(e.target.value);
               }}
+              required
             />
           </Form.Group>
           <Form.Group as={Col} className="mb-3" controlId="formGridAddress2">
@@ -87,6 +95,7 @@ const AddProject = ({ token, members }) => {
               onChange={(e) => {
                 setLanguage(e.target.value);
               }}
+              required
             />
           </Form.Group>
         </Row>
@@ -98,6 +107,7 @@ const AddProject = ({ token, members }) => {
             onChange={(e) => {
               setAudio(e.target.value);
             }}
+            required
           />
         </Form.Group>
         <Form.Group as={Col} className="mb-3" controlId="formGridAddress2">
@@ -108,6 +118,7 @@ const AddProject = ({ token, members }) => {
             onChange={(e) => {
               setDate(e.target.value);
             }}
+            required
           />
         </Form.Group>
         {members.map((member) => (
@@ -119,6 +130,7 @@ const AddProject = ({ token, members }) => {
               handleCheck(e);
               console.log(selectedMembers);
             }}
+            required
           />
         ))}
 
