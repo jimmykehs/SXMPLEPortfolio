@@ -13,11 +13,10 @@ app.use(morgan("dev"));
 const cors = require("cors");
 app.use(cors());
 
-app.get("/", (req, res, next) => {
-  res.send("Hey");
-});
 app.use("/api", require("./Routes"));
-
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 app.listen(PORT, () => {
   console.log(`Server is up at ${PORT}`);
   client.connect();
