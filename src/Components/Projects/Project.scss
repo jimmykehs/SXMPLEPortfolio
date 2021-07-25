@@ -1,3 +1,6 @@
+#Projects {
+}
+
 .Project-Card {
   width: 95vw;
   margin: 10px;
@@ -10,11 +13,12 @@
     flex-wrap: wrap;
     height: 300px;
     overflow-x: scroll;
+
     img,
     iframe {
       height: 275px;
-      width: 275px;
-      margin: 10px;
+      width: 90%;
+      margin: 0 5%;
       object-fit: fill;
       object-position: top;
       border-radius: 5px;

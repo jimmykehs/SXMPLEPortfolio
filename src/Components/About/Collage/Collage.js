@@ -4,7 +4,7 @@ import "./Collage.css";
 
 const Collage = () => {
   return (
-    <Card className="Collage-Container bg-light text-dark">
+    <Card className="Collage-Container bg-light text-dark" id="About">
       <Card.Img
         id="Collage-Img"
         src="https://via.placeholder.com/1000x250"
@@ -12,7 +12,7 @@ const Collage = () => {
       />
       <Card.ImgOverlay>
         <Card.Title>Some Interesting Text</Card.Title>
-        <a href="#Contact">
+        <a href="#Projects">
           <Button>Contact Us</Button>
         </a>
       </Card.ImgOverlay>

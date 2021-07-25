@@ -5,7 +5,6 @@ import { getMembers, getProjects } from "../Api";
 import {
   About,
   AdminPanel,
-  Collage,
   Contact,
   Login,
   Navigation,
@@ -40,7 +39,6 @@ const App = () => {
         setToken={setToken}
       />
       <Route exact path="/">
-        <Collage />
         <About />
         <Team members={members} />
         <Projects projects={projects} />

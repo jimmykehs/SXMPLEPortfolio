@@ -1,10 +1,11 @@
 #Team {
   height: 100vh;
+  background: aliceblue;
 }
 
-.Member-Container {
+.Members-Container {
   width: 100vw;
-  height: 70vh;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,30 +13,43 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   overflow-x: scroll;
 }
 
+.Member-Card-Container {
+  width: 90%;
+  height: 20%;
+  margin: 3% 5%;
+}
+
 .Member-Card {
   width: 100%;
-  height: 30%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
   background: #eee;
+  border-radius: 15px;
+  -webkit-box-shadow: 1px 1px rgba(97, 97, 97, 0.226);
+          box-shadow: 1px 1px rgba(97, 97, 97, 0.226);
   margin-right: 5px;
   margin-top: 10px;
+  padding: 15px;
 }
 
 .Member-Card img {
   height: 100px;
   width: 100px;
-  border-radius: 5px;
+  border-radius: 20px;
+  border: 1px solid #eee;
   -o-object-fit: contain;
      object-fit: contain;
 }

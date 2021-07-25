@@ -22,8 +22,8 @@
 .Project-Card .Project-Media img,
 .Project-Card .Project-Media iframe {
   height: 275px;
-  width: 275px;
-  margin: 10px;
+  width: 90%;
+  margin: 0 5%;
   -o-object-fit: fill;
      object-fit: fill;
   -o-object-position: top;
