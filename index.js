@@ -16,12 +16,11 @@ app.use(cors());
 app.use("/api", require("./Routes"));
 
 const path = require("path");
-
 app.use(express.static(path.join(__dirname, "build")));
-
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+
 app.listen(PORT, () => {
   console.log(`Server is up at ${PORT}`);
   client.connect();
