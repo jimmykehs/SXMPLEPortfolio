@@ -35,7 +35,7 @@ const ProjectCard = ({ project }) => {
         })}
       </div>
       <div className="Project-Details">
-        <h1>{project_name}</h1>
+        <h2>{project_name}</h2>
         <h6>{creation_date}</h6>
         <p>{description}</p>
         <div className="Project-Specs">

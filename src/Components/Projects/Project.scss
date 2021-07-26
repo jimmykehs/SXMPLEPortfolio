@@ -1,7 +1,9 @@
 .Project-Card {
+  display: flex;
+  flex-direction: column;
   height: auto;
-  width: 95vw;
-  margin: 10px;
+  width: 90vw;
+  margin: 10px 0;
   padding: 10px;
   background: #eee;
 
@@ -35,4 +37,30 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .Project-Card {
+    flex-direction: row;
+    background-color: white;
+    width: 100%;
+
+    .Project-Media {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      width: 50%;
+      overflow-x: initial;
+      img,
+      iframe {
+        height: 150px;
+        width: 150px;
+        margin: 0;
+      }
+    }
+    .Project-Details {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 25px;
+      background: #eee;
+    }
+  }
 }

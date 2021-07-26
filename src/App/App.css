@@ -11498,10 +11498,9 @@ fieldset:disabled .btn {
   }
 }
 
-.Section {
-  padding-bottom: 30px;
-  padding: 0 15px;
-  width: 100vw;
+section {
+  padding: 15px 0;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11517,7 +11516,7 @@ fieldset:disabled .btn {
           align-items: center;
 }
 
-.Section h1, .Section .h1 {
+section h1, section .h1 {
   padding: 15px;
 }
 /*# sourceMappingURL=App.css.map */
