@@ -34,18 +34,20 @@ const ProjectCard = ({ project }) => {
           return <img src={url} key={idx} />;
         })}
       </div>
-      <h1>{project_name}</h1>
-      <h6>{creation_date}</h6>
-      <p>{description}</p>
-      <div className="Project-Specs">
-        <p>
-          {game_engine} -- {language} -- {audio_software}
-        </p>
-      </div>
-      <div className="Project-Members">
-        {members.map((member) => {
-          return <MemberCard member={member} key={member.id} />;
-        })}
+      <div className="Project-Details">
+        <h1>{project_name}</h1>
+        <h6>{creation_date}</h6>
+        <p>{description}</p>
+        <div className="Project-Specs">
+          <p>
+            {game_engine} -- {language} -- {audio_software}
+          </p>
+        </div>
+        <div className="Project-Members">
+          {members.map((member) => {
+            return <MemberCard member={member} key={member.id} />;
+          })}
+        </div>
       </div>
     </div>
   );

@@ -51,3 +51,21 @@
     text-align: center;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  #Team {
+    height: auto;
+    padding: 30px;
+  }
+  .Members-Container {
+    width: 100%;
+    overflow: initial;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .Member-Card-Container {
+    height: 175px;
+    width: 30%;
+    margin: 15px;
+  }
+}

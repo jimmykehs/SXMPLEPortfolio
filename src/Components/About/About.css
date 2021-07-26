@@ -16,11 +16,17 @@
           align-items: center;
 }
 
-.About-Details h1 {
+.About-Details p {
   padding: 15px;
 }
 
-.About-Details p {
-  padding: 15px;
+@media screen and (min-width: 1024px) {
+  .About-Details {
+    padding: 30px;
+  }
+  .About-Details p {
+    max-width: 50%;
+    font-size: 1.3rem;
+  }
 }
 /*# sourceMappingURL=About.css.map */

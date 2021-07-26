@@ -1,4 +1,5 @@
 .Project-Card {
+  height: auto;
   width: 95vw;
   margin: 10px;
   padding: 10px;
@@ -15,17 +16,15 @@
           flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 300px;
+  height: 50vh;
   overflow-x: scroll;
 }
 
 .Project-Card .Project-Media img,
 .Project-Card .Project-Media iframe {
-  height: 275px;
+  height: 100%;
   width: 90%;
   margin: 0 5%;
-  -o-object-fit: fill;
-     object-fit: fill;
   -o-object-position: top;
      object-position: top;
   border-radius: 5px;

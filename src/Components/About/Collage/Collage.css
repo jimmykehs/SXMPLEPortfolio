@@ -9,4 +9,13 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
+
+@media screen and (min-width: 1024px) {
+  .Collage-Container {
+    height: 50vh;
+  }
+  .Collage-Container .Collage-Overlay {
+    padding: 5%;
+  }
+}
 /*# sourceMappingURL=Collage.css.map */

@@ -6,9 +6,10 @@ const Navigation = ({ loggedIn, setLoggedIn, setToken }) => {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="#home">SXMPLE Studios</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto"></Nav>
+          <Nav>
             <Nav.Link href="/#About">About Us</Nav.Link>
             <Nav.Link href="/#Team">Our Team</Nav.Link>
             <Nav.Link href="/#Projects">Projects</Nav.Link>

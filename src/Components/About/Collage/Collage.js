@@ -10,10 +10,10 @@ const Collage = () => {
         src="https://via.placeholder.com/1000x250"
         alt="Card image"
       />
-      <Card.ImgOverlay>
+      <Card.ImgOverlay className="Collage-Overlay">
         <Card.Title>Some Interesting Text</Card.Title>
         <a href="#Projects">
-          <Button>Contact Us</Button>
+          <Button>View Projects</Button>
         </a>
       </Card.ImgOverlay>
     </Card>

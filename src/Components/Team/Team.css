@@ -72,4 +72,27 @@
           align-items: center;
   text-align: center;
 }
+
+@media screen and (min-width: 1024px) {
+  #Team {
+    height: auto;
+    padding: 30px;
+  }
+  .Members-Container {
+    width: 100%;
+    overflow: initial;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .Member-Card-Container {
+    height: 175px;
+    width: 30%;
+    margin: 15px;
+  }
+}
 /*# sourceMappingURL=Team.css.map */

@@ -12,3 +12,13 @@
     padding: 15px;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .About-Details {
+    padding: 30px;
+    p {
+      max-width: 50%;
+      font-size: 1.3rem;
+    }
+  }
+}
