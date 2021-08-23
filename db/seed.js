@@ -72,7 +72,7 @@ async function seedData() {
       {
         name: "Joshua Byrd",
         position: "Lead Programmer & Project Manager",
-        image_path: "/",
+        image_path: "/Assets/UserImages/JoshByrd.jpg",
       },
       { name: "Ben Maderazo", position: "Programmer" },
       { name: "Travis Favors", position: "Programmer" },
@@ -81,6 +81,7 @@ async function seedData() {
       {
         name: "Kyle LeMaster",
         position: "Project Producer & Designer",
+        image_path: "/Assets/UserImages/Kyle.jpg",
       },
       { name: "Allen Opperman", position: "Designer & Audio" },
       {
@@ -125,7 +126,9 @@ async function seedData() {
     ];
 
     initialAdmins.forEach(async (admin) => await createAdmin(admin));
-    initialMembers.forEach(async (member) => await createMember(member));
+    initialMembers.forEach(
+      async (member) => await createMember(member, member.image_path)
+    );
     initialProjects.forEach(async (project) => await createProject(project));
 
     const RelativityMembers = [1, 4, 6, 7, 8, 9];

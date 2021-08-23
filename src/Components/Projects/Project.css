@@ -46,8 +46,10 @@
 }
 
 .Project-Card .Project-Members img {
-  height: 25px;
-  width: 25px;
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
   margin: 1px;
   border-radius: 50px;
 }

@@ -38,8 +38,8 @@
           align-items: center;
   background: #eee;
   border-radius: 15px;
-  -webkit-box-shadow: 1px 1px rgba(97, 97, 97, 0.226);
-          box-shadow: 1px 1px rgba(97, 97, 97, 0.226);
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
   margin-right: 5px;
   margin-top: 10px;
   padding: 15px;
@@ -48,10 +48,10 @@
 .Member-Card img {
   height: 100px;
   width: 100px;
-  border-radius: 20px;
-  border: 1px solid #eee;
-  -o-object-fit: contain;
-     object-fit: contain;
+  border-radius: 12px;
+  border: 3px solid #eee;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .Member-Card .Member-Details {
