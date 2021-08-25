@@ -161,6 +161,23 @@ async function addProjectMedia(projectID, media_path) {
   return projectMedia;
 }
 
+//Delete Functions
+
+async function deleteMember(memberID){
+  try {
+    const removedMember = await client.query(`
+      DELETE FROM members
+      WHERE ID = ($1)
+      RETURNING *;
+    
+    `, [memberID]);
+    return removedMember;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 module.exports = {
   addProjectMedia,
   addProjectMember,
@@ -168,6 +185,7 @@ module.exports = {
   createAdmin,
   createMember,
   createProject,
+  deleteMember,
   getAdminByUsername,
   getAllMembers,
   getAllProjects,

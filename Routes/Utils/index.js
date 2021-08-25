@@ -1,5 +1,5 @@
 function requireUser(req, res, next) {
-  if (!req.user) {
+    if (req.user === undefined) {
     next({
       name: "Unauthorized",
       message: "You must be logged in to make changes",

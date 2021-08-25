@@ -47,7 +47,7 @@ const App = () => {
       />
       <Route exact path="/">
         <About />
-        <Team members={members} />
+        <Team members={members} token={token}/>
         <Projects projects={projects} />
         <Contact />
       </Route>

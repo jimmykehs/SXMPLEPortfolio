@@ -130,7 +130,6 @@ const AddProject = ({ token, members }) => {
               handleCheck(e);
               console.log(selectedMembers);
             }}
-            required
           />
         ))}
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const membersRouter = express.Router();
-const { getAllMembers, createMember } = require("../../db");
+const { getAllMembers, createMember, deleteMember } = require("../../db");
 const requireUser = require("../Utils");
 
 const multer = require("multer");
@@ -44,4 +44,14 @@ membersRouter.post(
   }
 );
 
+membersRouter.delete("/", requireUser, async (req,res,next)=>{
+  try {
+    res.send("Hey")
+    // const {memberID} = req.body;
+    // const removedMember = await deleteMember(memberID);
+    // res.send(removedMember);
+  } catch (error) {
+    console.log(error)
+  }
+})
 module.exports = membersRouter;
