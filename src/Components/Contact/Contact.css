@@ -8,11 +8,19 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  height: 200px;
   padding: 10px;
 }
 
 .Social-Media img {
   height: 50px;
   width: 50px;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.Social-Media img:hover {
+  height: 75px;
+  width: 75px;
 }
 /*# sourceMappingURL=Contact.css.map */
