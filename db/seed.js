@@ -41,18 +41,19 @@ async function buildTables() {
         game_engine VARCHAR(255) NOT NULL,
         language VARCHAR(255) NOT NULL,
         audio_software VARCHAR(255) NOT NULL,
+        temporary_members VARCHAR(255),
         creation_date VARCHAR(255) NOT NULL
     );
 
     CREATE TABLE project_members(
         id SERIAL PRIMARY KEY,
-        "project_id" INTEGER REFERENCES projects(id),
-        "member_id" INTEGER REFERENCES members(id),
+        "project_id" INTEGER REFERENCES projects(id) ON DELETE CASCADE,
+        "member_id" INTEGER REFERENCES members(id) ON DELETE CASCADE,
         UNIQUE ("project_id", "member_id")
     );
 
     CREATE TABLE project_media(
-      "project_id" INTEGER REFERENCES projects(id),
+      "project_id" INTEGER REFERENCES projects(id) ON DELETE CASCADE,
       media_path VARCHAR(255) NOT NULL
     );
    `);
@@ -104,6 +105,7 @@ async function seedData() {
         language: "C#",
         audio_software: "Ableton",
         creation_date: "Fall 2020 - March 2021",
+        temporary_members: "",
       },
       {
         project_name: "Figure H8",
@@ -113,6 +115,7 @@ async function seedData() {
         language: "C#",
         audio_software: "Ableton",
         creation_date: "April 2021 - May 2021",
+        temporary_members: "",
       },
       {
         project_name: "Worked to Death",
@@ -122,6 +125,7 @@ async function seedData() {
         language: "C#",
         audio_software: "Abelton",
         creation_date: "May 2021 - Present",
+        temporary_members: "",
       },
     ];
 

@@ -116,7 +116,7 @@ async function createProject(projectData, members = []) {
     } = await client.query(
       `
             INSERT INTO projects(${Object.keys(projectData).toString()})
-            VALUES ($1, $2, $3, $4, $5, $6)
+            VALUES ($1, $2, $3, $4, $5, $6, $7)
             RETURNING *;
         `,
       Object.values(projectData)
@@ -163,18 +163,40 @@ async function addProjectMedia(projectID, media_path) {
 
 //Delete Functions
 
-async function deleteMember(memberID){
+async function deleteMember(memberID) {
   try {
-    const removedMember = await client.query(`
+    const { rows } = await client.query(
+      `
       DELETE FROM members
       WHERE ID = ($1)
       RETURNING *;
     
-    `, [memberID]);
-    return removedMember;
+    `,
+      [memberID]
+    );
+    return rows;
   } catch (error) {
     console.log(error);
     throw error;
+  }
+}
+
+async function deleteProject(projectID) {
+  try {
+    const { rows } = await client.query(
+      `
+    DELETE FROM projects
+    WHERE id = ($1)
+    RETURNING *;
+  
+  
+  `,
+      [projectID]
+    );
+    return rows;
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 }
 
@@ -186,6 +208,7 @@ module.exports = {
   createMember,
   createProject,
   deleteMember,
+  deleteProject,
   getAdminByUsername,
   getAllMembers,
   getAllProjects,

@@ -37,6 +37,31 @@
   }
 }
 
+.Project-Details {
+  position: relative;
+}
+
+.RemoveBtn {
+  height: 15px;
+  width: 15px;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 50px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  background: rgb(68, 68, 68);
+  align-items: center;
+  border: 3px solid black;
+  color: white;
+
+  &:hover {
+    background: rgb(233, 78, 58);
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .Project-Card {
     flex-direction: row;

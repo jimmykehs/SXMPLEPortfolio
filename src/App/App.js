@@ -38,6 +38,13 @@ const App = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    async function refreshProjects() {
+      setProjects(await getProjects());
+    }
+    refreshProjects();
+  }, [members]);
+
   return (
     <div className="App">
       <Navigation
@@ -47,8 +54,8 @@ const App = () => {
       />
       <Route exact path="/">
         <About />
-        <Team members={members} token={token}/>
-        <Projects projects={projects} />
+        <Team members={members} setMembers={setMembers} token={token} />
+        <Projects token={token} projects={projects} setProjects={setProjects} />
         <Contact />
       </Route>
       <Route exact path="/login">

@@ -7,7 +7,7 @@ const MemberCard = ({ member }) => {
 
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      {member.name}
+      {member.name ? member.name : member}
     </Tooltip>
   );
 
@@ -19,7 +19,11 @@ const MemberCard = ({ member }) => {
         overlay={renderTooltip}
       >
         <img
-          src={member.image_path}
+          src={
+            member.image_path
+              ? member.image_path
+              : "Assets/UserImages/DefaultProfile.jpg"
+          }
           ref={target}
           onClick={() => setShow(!show)}
         />

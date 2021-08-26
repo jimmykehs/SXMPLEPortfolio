@@ -11,6 +11,9 @@ const AddProject = ({ token, members }) => {
   const [date, setDate] = useState("");
   const [selectedMembers, setSelectedMembers] = useState([]);
   const [success, setSuccess] = useState("");
+  const [tempMemberName, setTempMemberName] = useState("");
+  const [tempMembers, setTempMembers] = useState([]);
+
   function handleCheck(event) {
     const newSelectedMembers = [...selectedMembers];
     if (event.target.checked) {
@@ -32,6 +35,7 @@ const AddProject = ({ token, members }) => {
           game_engine: engine,
           audio_software: audio,
           creation_date: date,
+          temporary_members: tempMembers.join(),
         },
         members: selectedMembers,
       })
@@ -42,6 +46,18 @@ const AddProject = ({ token, members }) => {
         setSuccess(err);
       });
   }
+  function addTempMember(memberName) {
+    const newTemps = [...tempMembers];
+    newTemps.push(memberName);
+    setTempMembers(newTemps);
+    setTempMemberName("");
+  }
+  function removeTempMember(memberIndex) {
+    const newTemps = [...tempMembers];
+    newTemps.splice(memberIndex, 1);
+    setTempMembers(newTemps);
+  }
+
   return (
     <div className="Create-Project-Form">
       <h1>Add Project</h1>
@@ -121,17 +137,59 @@ const AddProject = ({ token, members }) => {
             required
           />
         </Form.Group>
-        {members.map((member) => (
-          <Form.Check
-            label={member.name}
-            type="checkbox"
-            value={member.id}
-            onChange={(e) => {
-              handleCheck(e);
-              console.log(selectedMembers);
-            }}
-          />
-        ))}
+        <div className="MembersList">
+          {members.map((member) => {
+            return (
+              <Form.Check
+                className="MemberCheckbox"
+                key={member.id}
+                label={member.name}
+                type="checkbox"
+                value={member.id}
+                onChange={(e) => {
+                  handleCheck(e);
+                }}
+              />
+            );
+          })}
+        </div>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridEmail" id="TempMemberForm">
+            <Form.Control
+              className="ProjectTextInput"
+              type="text"
+              placeholder="Temporary Member"
+              value={tempMemberName}
+              onChange={(e) => {
+                setTempMemberName(e.target.value);
+              }}
+            />
+            <Button
+              variant="dark"
+              onClick={() => {
+                addTempMember(tempMemberName);
+              }}
+            >
+              Add Member
+            </Button>
+          </Form.Group>
+        </Row>
+        <div className="TempMembers">
+          {tempMembers.map((temp, idx) => {
+            return (
+              <div key={idx} className="TempMember">
+                <button
+                  onClick={() => {
+                    removeTempMember(idx);
+                  }}
+                >
+                  X
+                </button>
+                <p>{temp}</p>
+              </div>
+            );
+          })}
+        </div>
 
         <Button variant="primary" type="submit">
           Submit

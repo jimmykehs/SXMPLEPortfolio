@@ -29,7 +29,6 @@ membersRouter.post(
   upload.single("ProfilePic"),
   async (req, res, next) => {
     try {
-      console.log(req.file);
       let newMember;
       if (req.file) {
         const newPath = req.file.path.slice(6);
@@ -44,14 +43,13 @@ membersRouter.post(
   }
 );
 
-membersRouter.delete("/", requireUser, async (req,res,next)=>{
+membersRouter.delete("/:memberID", async (req, res, next) => {
   try {
-    res.send("Hey")
-    // const {memberID} = req.body;
-    // const removedMember = await deleteMember(memberID);
-    // res.send(removedMember);
+    const { memberID } = req.params;
+    const removedMember = await deleteMember(memberID);
+    res.send(removedMember);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-})
+});
 module.exports = membersRouter;

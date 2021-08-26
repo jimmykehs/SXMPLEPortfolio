@@ -1,6 +1,6 @@
 const express = require("express");
 const projectsRouter = express.Router();
-const { getAllProjects, createProject } = require("../../db");
+const { getAllProjects, createProject, deleteProject } = require("../../db");
 
 projectsRouter.get("/", async (req, res, next) => {
   try {
@@ -13,7 +13,6 @@ projectsRouter.get("/", async (req, res, next) => {
 
 projectsRouter.post("/", async (req, res, next) => {
   try {
-    console.log(req.body);
     const allProjects = await createProject(
       req.body.ProjectData,
       req.body.members
@@ -21,6 +20,16 @@ projectsRouter.post("/", async (req, res, next) => {
     res.send(allProjects);
   } catch (err) {
     next(err);
+  }
+});
+
+projectsRouter.delete("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const removedProject = await deleteProject(id);
+    res.send(removedProject);
+  } catch (error) {
+    next(error);
   }
 });
 
