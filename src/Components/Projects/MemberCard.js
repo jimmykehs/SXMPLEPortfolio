@@ -15,7 +15,7 @@ const MemberCard = ({ member }) => {
     <>
       <OverlayTrigger
         placement="bottom"
-        delay={{ show: 250, hide: 250 }}
+        delay={{ show: 200, hide: 200 }}
         overlay={renderTooltip}
       >
         <img

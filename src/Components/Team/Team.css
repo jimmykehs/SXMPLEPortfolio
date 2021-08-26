@@ -1,6 +1,10 @@
 #Team {
   height: 100vh;
-  background: aliceblue;
+  background: #302f2f;
+}
+
+#Team h1 {
+  color: white;
 }
 
 .Members-Container {

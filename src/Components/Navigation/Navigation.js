@@ -3,7 +3,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 
 const Navigation = ({ loggedIn, setLoggedIn, setToken }) => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar id="Navigation" bg="dark" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand href="#home">SXMPLE Studios</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
