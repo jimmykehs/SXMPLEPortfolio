@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import AddMember from "./AddMember";
-import AddProject from "./AddProject";
+import AddProject from "./AddProject/index.js";
 
 import "./Admin.css";
 
-const AdminPanel = ({ token, members }) => {
+const AdminPanel = ({ token, members, setMembers }) => {
   {
     if (!localStorage.getItem("SXMPLETOKEN")) {
       window.location.href = "/";
@@ -12,7 +12,7 @@ const AdminPanel = ({ token, members }) => {
   }
   return (
     <section id="Admin" className="Section">
-      <AddMember token={token} />
+      <AddMember token={token} members={members} setMembers={setMembers} />
       <AddProject token={token} members={members} />
     </section>
   );

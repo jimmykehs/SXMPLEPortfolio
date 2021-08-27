@@ -62,7 +62,7 @@ const App = () => {
         <Login setToken={setToken} setLoggedIn={setLoggedIn} />
       </Route>
       <Route exact path="/admin">
-        <AdminPanel token={token} members={members} />
+        <AdminPanel token={token} members={members} setMembers={setMembers} />
       </Route>
     </div>
   );

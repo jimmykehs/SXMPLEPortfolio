@@ -5,7 +5,7 @@ const {
   createAdmin,
   createProject,
   createMember,
-  addProjectMedia,
+  addProjectPhotos,
 } = require("./index");
 
 async function buildTables() {
@@ -42,6 +42,7 @@ async function buildTables() {
         language VARCHAR(255) NOT NULL,
         audio_software VARCHAR(255) NOT NULL,
         temporary_members VARCHAR(255),
+        media_urls VARCHAR(255),
         creation_date VARCHAR(255) NOT NULL
     );
 
@@ -106,6 +107,7 @@ async function seedData() {
         audio_software: "Ableton",
         creation_date: "Fall 2020 - March 2021",
         temporary_members: "",
+        media_urls: "",
       },
       {
         project_name: "Figure H8",
@@ -116,6 +118,7 @@ async function seedData() {
         audio_software: "Ableton",
         creation_date: "April 2021 - May 2021",
         temporary_members: "",
+        media_urls: "",
       },
       {
         project_name: "Worked to Death",
@@ -126,6 +129,7 @@ async function seedData() {
         audio_software: "Abelton",
         creation_date: "May 2021 - Present",
         temporary_members: "",
+        media_urls: "",
       },
     ];
 
@@ -143,12 +147,12 @@ async function seedData() {
     FigureH8Members.forEach(async (id) => await addProjectMember(2, id));
     WorkedToDeathMembers.forEach(async (id) => await addProjectMember(3, id));
 
-    // addProjectMedia(1, "https://via.placeholder.com/300x300");
-    // addProjectMedia(
+    // addProjectPhotos(1, "https://via.placeholder.com/300x300");
+    // addProjectPhotos(
     //   1,
     //   "https://media1.tenor.com/images/a77a9dcd5dbfed55a8826c902d4102fe/tenor.gif?itemid=20564230"
     // );
-    // addProjectMedia(1, "https://www.youtube.com/embed/b3_lVSrPB6w");
+    // addProjectPhotos(1, "https://www.youtube.com/embed/b3_lVSrPB6w");
   } catch (error) {
     console.log(error);
   }

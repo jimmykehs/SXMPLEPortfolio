@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const AddMember = ({ token }) => {
+const AddMember = ({ token, setMembers }) => {
   const [memberName, setMemberName] = useState("");
   const [memberPosition, setMemberPosition] = useState("");
   const [memberPhoto, setMemberPhoto] = useState({});

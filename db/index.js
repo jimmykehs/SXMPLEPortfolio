@@ -27,7 +27,7 @@ async function getAllProjects() {
 
     projects.map((project) => {
       project.members = [];
-      project.media = [];
+      project.photos = [];
       members.map((member) => {
         if (member.project_id === project.id) {
           project.members.push(member);
@@ -35,7 +35,7 @@ async function getAllProjects() {
       });
       media.map((media) => {
         if (media.project_id === project.id) {
-          project.media.push(media.media_path);
+          project.photos.push(media.media_path);
         }
       });
     });
@@ -111,12 +111,15 @@ async function createMember(
 }
 async function createProject(projectData, members = []) {
   try {
+    if (!projectData.media_urls) {
+      projectData.media_urls = "";
+    }
     const {
       rows: [newProject],
     } = await client.query(
       `
             INSERT INTO projects(${Object.keys(projectData).toString()})
-            VALUES ($1, $2, $3, $4, $5, $6, $7)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             RETURNING *;
         `,
       Object.values(projectData)
@@ -125,8 +128,7 @@ async function createProject(projectData, members = []) {
       console.log(member);
       await addProjectMember(newProject.id, member);
     });
-    const allProjects = await getAllProjects();
-    return allProjects;
+    return newProject;
   } catch (error) {
     console.log("Couldn't create project", error);
     throw error;
@@ -146,8 +148,10 @@ async function addProjectMember(projectID, memberID) {
   return addedMember;
 }
 
-async function addProjectMedia(projectID, media_path) {
-  const projectMedia = await client.query(
+async function addProjectPhotos(projectID, media_path) {
+  const {
+    rows: [projectMedia],
+  } = await client.query(
     `
     INSERT INTO project_media("project_id", media_path)
     VALUES ($1, $2)
@@ -201,7 +205,7 @@ async function deleteProject(projectID) {
 }
 
 module.exports = {
-  addProjectMedia,
+  addProjectPhotos,
   addProjectMember,
   client,
   createAdmin,

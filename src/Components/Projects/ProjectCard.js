@@ -14,7 +14,8 @@ const ProjectCard = ({ index, project, projects, setProjects, token }) => {
     creation_date,
     temporary_members,
     members,
-    media,
+    photos,
+    art_software,
   } = project;
 
   async function removeProject(id) {
@@ -30,7 +31,7 @@ const ProjectCard = ({ index, project, projects, setProjects, token }) => {
   return (
     <div className="Project-Card">
       <div className="Project-Media">
-        {media.map((url, idx) => {
+        {photos.map((url, idx) => {
           if (url.includes("youtube")) {
             return (
               <iframe
@@ -63,7 +64,7 @@ const ProjectCard = ({ index, project, projects, setProjects, token }) => {
         <p>{description}</p>
         <div className="Project-Specs">
           <p>
-            {game_engine} -- {language} -- {audio_software}
+            {game_engine} -- {language} -- {audio_software} -- {art_software}
           </p>
         </div>
         <div className="Project-Members">
