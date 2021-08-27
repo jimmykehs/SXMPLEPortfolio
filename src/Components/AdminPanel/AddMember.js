@@ -51,7 +51,7 @@ const AddMember = ({ token, setMembers }) => {
           />
         </Form.Group>
 
-        <Form.Group controlId="formFile" className="mb-3">
+        <Form.Group controlId="ImageForm" className="mb-3">
           <Form.Label>
             User Image (If none selected, default photo will be used)
           </Form.Label>

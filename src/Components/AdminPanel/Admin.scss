@@ -115,3 +115,33 @@
     }
   }
 }
+
+#ImageForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.ErrorBox,
+.SuccessBox {
+  height: 10vh;
+  width: 25vw;
+  color: white;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  display: none;
+}
+
+.SuccessBox {
+  background: green;
+}
+
+.ErrorBox {
+  background: rgb(233, 65, 65);
+}
+
+.activeMessageBox {
+  display: inherit;
+}

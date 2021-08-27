@@ -3,8 +3,8 @@ import { Form, Button } from "react-bootstrap";
 
 const AddPhotos = ({ projectPhotos, setProjectPhotos }) => {
   return (
-    <div>
-      <Form.Group controlId="formFile" className="mb-3">
+    <div className="ImageForm">
+      <Form.Group controlId="ImageForm" className="mb-3">
         <Form.Label>Project Images</Form.Label>
         <Form.Control
           type="file"

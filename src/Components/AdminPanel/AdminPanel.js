@@ -12,6 +12,12 @@ const AdminPanel = ({ token, members, setMembers }) => {
   }
   return (
     <section id="Admin" className="Section">
+      <div className="SuccessBox">
+        <p>Success!</p>
+      </div>
+      <div className="ErrorBox">
+        <p>ERROR</p>
+      </div>
       <AddMember token={token} members={members} setMembers={setMembers} />
       <AddProject token={token} members={members} />
     </section>
