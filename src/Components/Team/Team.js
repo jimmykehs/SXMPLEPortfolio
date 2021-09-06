@@ -1,7 +1,5 @@
 import React from "react";
 import "./Team.css";
-import DragSortableList from "react-drag-sortable";
-import { deleteMember } from "../../Api";
 
 const Team = ({ members, token }) => {
   return (
