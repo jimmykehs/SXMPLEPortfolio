@@ -11,7 +11,6 @@ import AddProject from "./AddProject/index.js";
 import EditMembers from "./EditMembers/EditMembers.js";
 
 import "./Admin.css";
-import EditProject from "./EditProject";
 
 const AdminPanel = ({ token, members, projects, setMembers }) => {
   {
