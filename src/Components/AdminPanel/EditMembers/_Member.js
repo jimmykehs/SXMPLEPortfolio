@@ -6,6 +6,8 @@ const _Member = ({ member, index, setMembers, members }) => {
   const [name, setName] = useState(member.name);
   const [position, setPosition] = useState(member.position);
   const [sortNumber, setSortNumber] = useState(member.sortnumber);
+  const [imagePath, setImagePath] = useState(member.image_path);
+  const [PFP, setPFP] = useState({});
   const [inputStyle, setInputStyle] = useState({ border: "3px solid #eee" });
   const [confirmPrompt, setConfirmPrompt] = useState(false);
 
@@ -17,17 +19,19 @@ const _Member = ({ member, index, setMembers, members }) => {
   }
 
   async function updateMember() {
-    const updateData = {
-      name,
-      position,
-    };
+    const userData = new FormData();
+    userData.append("name", name);
+    userData.append("position", position);
+    userData.append("ProfilePic", PFP);
+
     axios
-      .patch(`/api/members/${member.id}`, updateData)
-      .then(() => {
+      .patch(`/api/members/${member.id}`, userData)
+      .then(({ data }) => {
         setInputStyle({ border: "3px solid green" });
         setTimeout(() => {
           setInputStyle({ border: "3px solid #eee" });
         }, 1000);
+        setImagePath(data[0].image_path);
       })
       .catch((e) => {
         setInputStyle({ border: "3px solid red" });
@@ -36,6 +40,19 @@ const _Member = ({ member, index, setMembers, members }) => {
   }
   return (
     <div key={member.id} className="editMember">
+      <div className="editPFP">
+        <img src={`../${imagePath}`} style={inputStyle} />
+        <input
+          type="file"
+          accept="image/png, image/jpeg, image/jpg"
+          onChange={(e) => {
+            setPFP(e.target.files[0]);
+          }}
+          onBlur={() => {
+            updateMember();
+          }}
+        />
+      </div>
       <input
         style={inputStyle}
         type="text"

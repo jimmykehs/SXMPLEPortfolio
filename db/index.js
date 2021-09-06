@@ -46,6 +46,26 @@ async function getAllProjects() {
   }
 }
 
+async function getProjectByID(projectID) {
+  try {
+    const {
+      rows: [project],
+    } = await client.query(
+      `
+      SELECT * FROM projects
+      WHERE id = ($1)
+      RETURNING *;
+    
+    
+    `,
+      [projectID]
+    );
+    return project;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getAdminByUsername(username) {
   try {
     const {

@@ -13,7 +13,7 @@ const Team = ({ members, token }) => {
           return (
             <div className="Member-Card-Container" key={index}>
               <div className="Member-Card">
-                <img src={image_path} alt="Team Member" />
+                <img src={`${image_path}`} alt="Team Member" />
                 <div className="Member-Details">
                   <h5>{name}</h5>
                   <p>{position}</p>

@@ -2,6 +2,7 @@ const express = require("express");
 const projectsRouter = express.Router();
 const {
   getAllProjects,
+  getProjectByID,
   createProject,
   deleteProject,
   addProjectPhotos,
@@ -23,6 +24,16 @@ projectsRouter.get("/", async (req, res, next) => {
   try {
     const allProjects = await getAllProjects();
     res.send(allProjects);
+  } catch (error) {
+    next(error);
+  }
+});
+
+projectsRouter.get("/:projectID", async (req, res, next) => {
+  try {
+    const { projectID } = req.params;
+    const project = await getProjectByID(projectID);
+    res.send(project);
   } catch (error) {
     next(error);
   }

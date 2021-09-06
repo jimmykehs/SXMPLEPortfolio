@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 
 import _Member from "./_Member";
 
-const SortMembers = ({ members, setMembers }) => {
+const EditMembers = ({ members, setMembers }) => {
   return (
     <div>
       {members.map((member, idx) => {
@@ -21,4 +21,4 @@ const SortMembers = ({ members, setMembers }) => {
   );
 };
 
-export default SortMembers;
+export default EditMembers;

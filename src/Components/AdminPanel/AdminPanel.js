@@ -3,51 +3,49 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink,
+  Link,
+  useRouteMatch,
 } from "react-router-dom";
 import AddMember from "./AddMember";
 import AddProject from "./AddProject/index.js";
+import EditMembers from "./EditMembers/EditMembers.js";
 
 import "./Admin.css";
-import SortMembers from "./SortMembers/SortMembers.js";
+import EditProject from "./EditProject";
 
-const AdminPanel = ({ token, members, setMembers }) => {
+const AdminPanel = ({ token, members, projects, setMembers }) => {
   {
     if (!localStorage.getItem("SXMPLETOKEN")) {
       window.location.href = "/";
     }
   }
+
+  let { path, url } = useRouteMatch();
   return (
-    <Router>
-      <section id="Admin" className="Section">
-        <div className="adminOptionsContainer">
-          <NavLink className="adminOption" to="/admin/addMember">
-            Add Member
-          </NavLink>
-          <NavLink className="adminOption" to="/admin/addProject">
-            Add Project
-          </NavLink>
-          <NavLink className="adminOption" to="/admin/sortMembers">
-            Edit Members
-          </NavLink>
-        </div>
-        <Switch>
-          <Route path="/admin/addMember">
-            <AddMember
-              token={token}
-              members={members}
-              setMembers={setMembers}
-            />
-          </Route>
-          <Route path="/admin/addProject">
-            <AddProject token={token} members={members} />
-          </Route>
-          <Route path="/admin/sortMembers">
-            <SortMembers members={members} setMembers={setMembers} />
-          </Route>
-        </Switch>
-      </section>
-    </Router>
+    <section id="Admin" className="Section">
+      <div className="adminOptionsContainer">
+        <Link className="adminOption" to={`${url}/addMember`}>
+          Add Members
+        </Link>
+        <Link className="adminOption" to={`${url}/editMembers`}>
+          Edit Members
+        </Link>
+        <Link className="adminOption" to={`${url}/addProject`}>
+          Add Projects
+        </Link>
+      </div>
+      <Switch>
+        <Route exact path={`${path}/addMember`}>
+          <AddMember token={token} members={members} setMembers={setMembers} />
+        </Route>
+        <Route exact path={`${path}/editMembers`}>
+          <EditMembers members={members} setMembers={setMembers} />
+        </Route>
+        <Route exact path={`${path}/addProject`}>
+          <AddProject token={token} members={members} />
+        </Route>
+      </Switch>
+    </section>
   );
 };
 
