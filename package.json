@@ -1,7 +1,7 @@
 {
   "name": "sxmple_portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Port",
   "main": "index.js",
   "scripts": {
     "server:dev": "nodemon index.js",
