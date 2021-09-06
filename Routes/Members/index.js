@@ -69,7 +69,7 @@ membersRouter.delete("/:memberID", async (req, res, next) => {
     const removedMember = await deleteMember(memberID);
     res.send(removedMember);
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 });
 
