@@ -1,3 +1,23 @@
+.adminOptionsContainer {
+  display: flex;
+}
+
+.adminOption {
+  text-decoration: none;
+  color: black;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(224, 224, 224);
+  margin: 15px;
+  padding: 10px;
+  &:hover {
+    background-color: rgb(182, 182, 182);
+    color: black;
+  }
+}
+
 .Create-Member-Form {
   background: #eee;
   padding: 15px;
@@ -121,27 +141,79 @@
   flex-direction: column;
 }
 
-.ErrorBox,
-.SuccessBox {
-  height: 10vh;
-  width: 25vw;
-  color: white;
-  top: 10px;
+#Admin {
+  padding: 0;
+}
+
+.adminOptionsContainer {
+  background: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: sticky;
-  display: none;
+  width: 100vw;
 }
 
-.SuccessBox {
-  background: green;
-}
+.editMember {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: rgb(221, 221, 221);
+  margin: 10px;
+  position: relative;
+  input {
+    box-sizing: border-box;
+    border: 2px solid #eee;
+    padding: 10px;
+    margin: 10px;
+    transition: all 0.2s ease;
+  }
+  .RemoveBtn {
+    height: 15px;
+    width: 15px;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    background: rgb(68, 68, 68);
+    align-items: center;
+    border: 3px solid black;
+    color: white;
 
-.ErrorBox {
-  background: rgb(233, 65, 65);
-}
+    &:hover {
+      background: rgb(233, 78, 58);
+    }
+  }
+  .DeleteConfirm {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgb(87, 87, 88);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    opacity: 100%;
 
-.activeMessageBox {
-  display: inherit;
+    button {
+      width: 100px;
+      border: none;
+      padding: 10px;
+    }
+
+    .ConfirmBtn {
+      background-color: rgb(26, 167, 26);
+      &:hover {
+        background-color: white;
+      }
+    }
+
+    .DenyBtn {
+      background-color: rgb(209, 66, 66);
+      &:hover {
+        background-color: white;
+      }
+    }
+  }
 }

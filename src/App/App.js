@@ -25,7 +25,11 @@ const App = () => {
         setToken(userToken);
         setLoggedIn(true);
       }
-      setMembers(await getMembers());
+      const allMembers = await getMembers();
+      allMembers.sort((a, b) => {
+        return a.sortnumber - b.sortnumber;
+      });
+      setMembers(allMembers);
       setProjects(await getProjects());
       var docWidth = document.documentElement.offsetWidth;
 

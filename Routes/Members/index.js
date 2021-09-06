@@ -1,6 +1,12 @@
 const express = require("express");
 const membersRouter = express.Router();
-const { getAllMembers, createMember, deleteMember } = require("../../db");
+const {
+  getAllMembers,
+  createMember,
+  deleteMember,
+  updateMember,
+  updateMemberSort,
+} = require("../../db");
 const requireUser = require("../Utils");
 
 const multer = require("multer");
@@ -50,6 +56,27 @@ membersRouter.delete("/:memberID", async (req, res, next) => {
     res.send(removedMember);
   } catch (error) {
     console.log(error);
+  }
+});
+
+membersRouter.patch("/:memberID", async (req, res, next) => {
+  try {
+    const { memberID } = req.params;
+    const updatedMember = await updateMember(memberID, req.body);
+    res.send(updatedMember);
+  } catch (error) {
+    next(error);
+  }
+});
+
+membersRouter.patch("/sort/:memberID", async (req, res, next) => {
+  try {
+    const { memberID } = req.params;
+    const { sortNumber } = req.body;
+    const updatedMember = await updateMemberSort(memberID, sortNumber);
+    res.send(updatedMember);
+  } catch (error) {
+    next(error);
   }
 });
 module.exports = membersRouter;

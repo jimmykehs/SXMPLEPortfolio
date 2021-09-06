@@ -3,13 +3,7 @@ import "./Team.css";
 import DragSortableList from "react-drag-sortable";
 import { deleteMember } from "../../Api";
 
-const Team = ({ members, setMembers, token }) => {
-  async function handleRemoveMember(memberID, index) {
-    const member = await deleteMember(memberID);
-    const newMembers = [...members];
-    newMembers.splice(index, 1);
-    setMembers(newMembers);
-  }
+const Team = ({ members, token }) => {
   return (
     <section id="Team" className="Section">
       <h1>Our Team</h1>
@@ -19,16 +13,6 @@ const Team = ({ members, setMembers, token }) => {
           return (
             <div className="Member-Card-Container" key={index}>
               <div className="Member-Card">
-                {token && (
-                  <button
-                    className="RemoveBtn"
-                    onClick={() => {
-                      handleRemoveMember(member.id, index);
-                    }}
-                  >
-                    X
-                  </button>
-                )}
                 <img src={image_path} alt="Team Member" />
                 <div className="Member-Details">
                   <h5>{name}</h5>

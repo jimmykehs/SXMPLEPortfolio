@@ -204,6 +204,45 @@ async function deleteProject(projectID) {
   }
 }
 
+//Update Functions
+
+async function updateMember(memberID, updateData) {
+  try {
+    const setString = Object.keys(updateData)
+      .map((key, index) => `"${key}"=$${index + 1}`)
+      .join(", ");
+    const { rows } = await client.query(
+      `
+    UPDATE members 
+    SET ${setString}
+    WHERE id=${memberID}
+    RETURNING *;`,
+      Object.values(updateData)
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateMemberSort(memberID, sortNumber) {
+  try {
+    const { rows } = await client.query(
+      `
+      UPDATE members
+      SET sortnumber = ($1)
+      WHERE id = ($2)
+      RETURNING *;
+    
+    `,
+      [sortNumber, memberID]
+    );
+    console.log(rows);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
 module.exports = {
   addProjectPhotos,
   addProjectMember,
@@ -216,4 +255,6 @@ module.exports = {
   getAdminByUsername,
   getAllMembers,
   getAllProjects,
+  updateMember,
+  updateMemberSort,
 };
