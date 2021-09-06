@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { getMembers } from "../../Api";
 
 const AddMember = ({ token, setMembers }) => {
   const [memberName, setMemberName] = useState("");
@@ -22,10 +23,15 @@ const AddMember = ({ token, setMembers }) => {
             .post("/api/members", userData, {
               headers: { Authorization: `Bearer ${token}` },
             })
-            .then(() => {
+            .then(async () => {
               setMemberName("");
               setMemberPosition("");
               setSuccess("User has been added!");
+              const allMembers = await getMembers();
+              allMembers.sort((a, b) => {
+                return a.sortnumber - b.sortnumber;
+              });
+              setMembers(allMembers);
             });
         }}
       >
@@ -51,7 +57,7 @@ const AddMember = ({ token, setMembers }) => {
           />
         </Form.Group>
 
-        <Form.Group controlId="formFile" className="mb-3">
+        <Form.Group controlId="ImageForm" className="mb-3">
           <Form.Label>
             User Image (If none selected, default photo will be used)
           </Form.Label>

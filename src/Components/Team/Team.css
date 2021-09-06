@@ -51,8 +51,10 @@
 }
 
 .Member-Card img {
-  height: 100px;
-  width: 100px;
+  min-height: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  max-width: 100px;
   border-radius: 12px;
   border: 3px solid #eee;
   -o-object-fit: cover;
@@ -76,33 +78,6 @@
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-}
-
-.RemoveBtn {
-  height: 15px;
-  width: 15px;
-  padding: 15px;
-  font-size: 18px;
-  border-radius: 50px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background: #444444;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: 3px solid black;
-  color: white;
-}
-
-.RemoveBtn:hover {
-  background: #e94e3a;
 }
 
 @media screen and (min-width: 1024px) {

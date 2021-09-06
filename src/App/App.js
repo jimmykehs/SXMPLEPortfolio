@@ -25,7 +25,11 @@ const App = () => {
         setToken(userToken);
         setLoggedIn(true);
       }
-      setMembers(await getMembers());
+      const allMembers = await getMembers();
+      allMembers.sort((a, b) => {
+        return a.sortnumber - b.sortnumber;
+      });
+      setMembers(allMembers);
       setProjects(await getProjects());
       var docWidth = document.documentElement.offsetWidth;
 
@@ -58,11 +62,16 @@ const App = () => {
         <Projects token={token} projects={projects} setProjects={setProjects} />
         <Contact />
       </Route>
-      <Route exact path="/login">
+      <Route path="/login">
         <Login setToken={setToken} setLoggedIn={setLoggedIn} />
       </Route>
-      <Route exact path="/admin">
-        <AdminPanel token={token} members={members} setMembers={setMembers} />
+      <Route path="/admin">
+        <AdminPanel
+          token={token}
+          members={members}
+          projects={projects}
+          setMembers={setMembers}
+        />
       </Route>
     </div>
   );

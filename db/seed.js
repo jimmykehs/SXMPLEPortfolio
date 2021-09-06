@@ -31,7 +31,8 @@ async function buildTables() {
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         position VARCHAR(255) NOT NULL,
-        image_path VARCHAR(255) NOT NULL
+        image_path VARCHAR(255) NOT NULL,
+        sortNumber SERIAL
     );
 
     CREATE TABLE projects(

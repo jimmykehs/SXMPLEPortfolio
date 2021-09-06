@@ -5,10 +5,12 @@ const TempMembers = ({ tempMembers, setTempMembers }) => {
   const [tempMemberName, setTempMemberName] = useState("");
 
   function addTempMember(memberName) {
-    const newTemps = [...tempMembers];
-    newTemps.push(memberName);
-    setTempMembers(newTemps);
-    setTempMemberName("");
+    if (memberName) {
+      const newTemps = [...tempMembers];
+      newTemps.push(memberName);
+      setTempMembers(newTemps);
+      setTempMemberName("");
+    }
   }
   function removeTempMember(memberIndex) {
     const newTemps = [...tempMembers];
@@ -17,14 +19,14 @@ const TempMembers = ({ tempMembers, setTempMembers }) => {
   }
   return (
     <div>
-      <h4>Temporary Members</h4>
+      <h4>Other Members</h4>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail" id="TempMemberForm">
           <Form.Control
             className="ProjectTextInput"
             type="text"
-            placeholder="Temporary Member"
+            placeholder="Other Member Name"
             value={tempMemberName}
             onChange={(e) => {
               setTempMemberName(e.target.value);
