@@ -8,7 +8,7 @@ const AddMember = ({ token, setMembers }) => {
   const [memberPosition, setMemberPosition] = useState("");
   const [memberPhoto, setMemberPhoto] = useState({});
   const [requestStatus, setRequestStatus] = useState({
-    backgroundColor: "blue",
+    backgroundColor: "#247bc8",
   });
   return (
     <div className="Create-Member-Form">

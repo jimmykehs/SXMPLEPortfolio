@@ -263,6 +263,7 @@ async function updateMemberSort(memberID, sortNumber) {
     throw error;
   }
 }
+
 module.exports = {
   addProjectPhotos,
   addProjectMember,

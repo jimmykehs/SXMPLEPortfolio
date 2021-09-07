@@ -4,6 +4,8 @@ const { getAdminByUsername } = require("../../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+const { rebuildDB } = require("../../db/seed.js");
+
 adminRouter.post("/", async (req, res, next) => {
   try {
     const { username, password } = req.body;
@@ -21,6 +23,15 @@ adminRouter.post("/", async (req, res, next) => {
     }
   } catch (err) {
     next(err);
+  }
+});
+
+adminRouter.get("/resetDatabase", async (req, res, next) => {
+  try {
+    await rebuildDB();
+    res.send("All is well");
+  } catch (error) {
+    next(error);
   }
 });
 

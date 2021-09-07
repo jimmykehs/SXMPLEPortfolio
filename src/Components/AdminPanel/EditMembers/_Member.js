@@ -7,9 +7,7 @@ const _Member = ({ member, index, setMembers, members }) => {
   const [position, setPosition] = useState(member.position);
   const [imagePath, setImagePath] = useState(member.image_path);
   const [PFP, setPFP] = useState({});
-  const [updateStatus, setUpdateStatus] = useState({
-    border: "3px solid #eee",
-  });
+  const [updateStatus, setUpdateStatus] = useState({});
   const [confirmPrompt, setConfirmPrompt] = useState(false);
 
   const isInitialMount = useRef(true);
@@ -37,7 +35,7 @@ const _Member = ({ member, index, setMembers, members }) => {
     axios
       .patch(`/api/members/${member.id}`, userData)
       .then(({ data }) => {
-        setUpdateStatus({ backgroundColor: "green" });
+        setUpdateStatus({ backgroundColor: "#66cc5e" });
         setImagePath(data[0].image_path);
       })
       .catch((e) => {
@@ -84,6 +82,7 @@ const _Member = ({ member, index, setMembers, members }) => {
           onChange={(e) => {
             setPosition(e.target.value);
           }}
+          onBlur={() => updateMember()}
         ></input>
       </div>
       <button
@@ -96,7 +95,7 @@ const _Member = ({ member, index, setMembers, members }) => {
       </button>
       {confirmPrompt && (
         <div className="DeleteConfirm">
-          <p>Are you sure?</p>
+          <p>Are you sure you want to delete {member.name}?</p>
           <button
             className="ConfirmBtn"
             onClick={() => {

@@ -19,11 +19,18 @@
       color: black;
     }
   }
+
+  .resetDBButton {
+    background-color: rgb(229, 60, 60);
+    color: white;
+    border: 2px solid black;
+  }
 }
 
 #Admin {
   padding: 0;
   width: 100vw;
+  position: relative;
 }
 
 .AllProjects {
@@ -40,5 +47,35 @@
   &:hover {
     background-color: tomato;
     color: white;
+  }
+}
+
+#ResetDBModule {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(234, 234, 234);
+  padding: 100px;
+  h1 {
+    padding: 0;
+  }
+  button {
+    padding: 15px;
+    width: 150px;
+    margin: 15px;
+    border: 3px solid rgb(73, 72, 72);
+    color: white;
+  }
+  .ConfirmDBReset {
+    background-color: rgb(74, 183, 74);
+    &:hover {
+      background-color: green;
+    }
+  }
+  .CancelDBReset {
+    background-color: rgb(243, 63, 63);
+    &:hover {
+      background-color: red;
+    }
   }
 }
