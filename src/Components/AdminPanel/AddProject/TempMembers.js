@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
 
 const TempMembers = ({ tempMembers, setTempMembers }) => {
   const [tempMemberName, setTempMemberName] = useState("");
@@ -20,28 +19,23 @@ const TempMembers = ({ tempMembers, setTempMembers }) => {
   return (
     <div>
       <h4>Other Members</h4>
+      <input
+        type="text"
+        placeholder="Other Member"
+        value={tempMemberName}
+        onChange={(e) => {
+          setTempMemberName(e.target.value);
+        }}
+      />
+      <button
+        type="button"
+        onClick={() => {
+          addTempMember(tempMemberName);
+        }}
+      >
+        Add Member
+      </button>
 
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail" id="TempMemberForm">
-          <Form.Control
-            className="ProjectTextInput"
-            type="text"
-            placeholder="Other Member Name"
-            value={tempMemberName}
-            onChange={(e) => {
-              setTempMemberName(e.target.value);
-            }}
-          />
-          <Button
-            variant="dark"
-            onClick={() => {
-              addTempMember(tempMemberName);
-            }}
-          >
-            Add Member
-          </Button>
-        </Form.Group>
-      </Row>
       <div className="TempMembers">
         {tempMembers.map((temp, idx) => {
           return (

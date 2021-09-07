@@ -35,8 +35,10 @@ apiRouter.use("/members", membersRouter);
 apiRouter.use("/projects", projectsRouter);
 apiRouter.use("/admin", adminRouter);
 
-apiRouter.use((error, req, res, next) => {
-  res.send(error);
+apiRouter.use((err, req, res, next) => {
+  const { message } = err;
+  console.log(message);
+  res.send({ message });
 });
 
 module.exports = apiRouter;

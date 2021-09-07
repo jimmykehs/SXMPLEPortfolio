@@ -1,15 +1,25 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { deleteMember } from "../../../Api";
 
 const _Member = ({ member, index, setMembers, members }) => {
   const [name, setName] = useState(member.name);
   const [position, setPosition] = useState(member.position);
-  const [sortNumber, setSortNumber] = useState(member.sortnumber);
   const [imagePath, setImagePath] = useState(member.image_path);
   const [PFP, setPFP] = useState({});
-  const [inputStyle, setInputStyle] = useState({ border: "3px solid #eee" });
+  const [updateStatus, setUpdateStatus] = useState({
+    border: "3px solid #eee",
+  });
   const [confirmPrompt, setConfirmPrompt] = useState(false);
+
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      updateMember();
+    }
+  }, [PFP]);
 
   async function handleRemoveMember(memberID, index) {
     await deleteMember(memberID);
@@ -27,22 +37,26 @@ const _Member = ({ member, index, setMembers, members }) => {
     axios
       .patch(`/api/members/${member.id}`, userData)
       .then(({ data }) => {
-        setInputStyle({ border: "3px solid green" });
-        setTimeout(() => {
-          setInputStyle({ border: "3px solid #eee" });
-        }, 1000);
+        setUpdateStatus({ backgroundColor: "green" });
         setImagePath(data[0].image_path);
       })
       .catch((e) => {
-        setInputStyle({ border: "3px solid red" });
+        setUpdateStatus({ backgroundColor: "red" });
         console.log(e);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setUpdateStatus({ backgroundColor: "#dddddd" });
+        }, 1000);
       });
   }
   return (
-    <div key={member.id} className="editMember">
+    <div key={member.id} className="editMember" style={updateStatus}>
       <div className="editPFP">
-        <img src={`../${imagePath}`} style={inputStyle} />
+        <img src={`${imagePath}`} />
+        <label htmlFor={`PFP${member.id}`}>Change PFP</label>
         <input
+          id={`PFP${member.id}`}
           type="file"
           accept="image/png, image/jpeg, image/jpg"
           onChange={(e) => {
@@ -53,26 +67,25 @@ const _Member = ({ member, index, setMembers, members }) => {
           }}
         />
       </div>
-      <input
-        style={inputStyle}
-        type="text"
-        value={name}
-        placeholder="Member Name"
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-        onBlur={() => updateMember()}
-      ></input>
-      <input
-        style={inputStyle}
-        type="text"
-        value={position}
-        placeholder="Member Position"
-        onChange={(e) => {
-          setPosition(e.target.value);
-        }}
-        onBlur={() => updateMember()}
-      ></input>
+      <div className="NamePositionInputs">
+        <input
+          type="text"
+          value={name}
+          placeholder="Member Name"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          onBlur={() => updateMember()}
+        ></input>
+        <input
+          type="text"
+          value={position}
+          placeholder="Member Position"
+          onChange={(e) => {
+            setPosition(e.target.value);
+          }}
+        ></input>
+      </div>
       <button
         className="RemoveBtn"
         onClick={() => {

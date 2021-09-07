@@ -1,0 +1,121 @@
+.EditMembersContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  width: 100vw;
+}
+
+.editMember {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 400px;
+  margin: 10px;
+  padding: 10px;
+
+  background: rgb(221, 221, 221);
+  position: relative;
+
+  transition: all 0.25s ease;
+
+  .editPFP {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    img {
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
+    }
+    label {
+      background-color: rgb(51, 51, 51);
+      color: white;
+      padding: 5px;
+      margin: 5px;
+      &:hover {
+        background-color: rgb(65, 65, 65);
+      }
+    }
+    input {
+      display: none;
+    }
+  }
+  .NamePositionInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    input {
+      width: 100%;
+      margin: 5px;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+  }
+  .RemoveBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 15px;
+    width: 15px;
+    padding: 15px;
+    border-radius: 50px;
+    font-size: 18px;
+
+    background: rgb(68, 68, 68);
+    border: 3px solid black;
+    color: white;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    &:hover {
+      background: rgb(233, 78, 58);
+    }
+  }
+
+  .DeleteConfirm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(87, 87, 88);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+
+    button {
+      width: 100px;
+      border: 1px solid black;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .ConfirmBtn {
+      background-color: rgb(26, 167, 26);
+      &:hover {
+        background-color: white;
+      }
+    }
+
+    .DenyBtn {
+      background-color: rgb(209, 66, 66);
+      &:hover {
+        background-color: white;
+      }
+    }
+  }
+}

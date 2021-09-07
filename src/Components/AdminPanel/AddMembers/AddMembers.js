@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { getMembers } from "../../Api";
-
+import { getMembers } from "../../../Api";
+import "./AddMembers.css";
 const AddMember = ({ token, setMembers }) => {
   const [memberName, setMemberName] = useState("");
   const [memberPosition, setMemberPosition] = useState("");

@@ -1,5 +1,4 @@
 import React from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
 
 const TeamMembers = ({ members, selectedMembers, setSelectedMembers }) => {
   function handleCheck(event) {
@@ -14,21 +13,24 @@ const TeamMembers = ({ members, selectedMembers, setSelectedMembers }) => {
     }
   }
   return (
-    <div>
+    <div className="MembersListContainer">
       <h4>Team Members</h4>
       <div className="MembersList">
         {members.map((member) => {
           return (
-            <Form.Check
-              className="MemberCheckbox"
-              key={member.id}
-              label={member.name}
-              type="checkbox"
-              value={member.id}
-              onChange={(e) => {
-                handleCheck(e);
-              }}
-            />
+            <div className="MemberInput">
+              <input
+                id={`Member${member.id}`}
+                type="checkbox"
+                className="MemberCheckbox"
+                key={member.id}
+                value={member.id}
+                onChange={(e) => {
+                  handleCheck(e);
+                }}
+              />
+              <label htmlFor={`Member${member.id}`}>{member.name}</label>
+            </div>
           );
         })}
       </div>

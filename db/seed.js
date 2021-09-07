@@ -75,7 +75,8 @@ async function seedData() {
       {
         name: "Joshua Byrd",
         position: "Lead Programmer & Project Manager",
-        image_path: "/Assets/UserImages/JoshByrd.jpg",
+        image_path:
+          "https://sxmpleimages.s3.us-east-2.amazonaws.com/UserImages/JoshByrd.jpg",
       },
       { name: "Ben Maderazo", position: "Programmer" },
       { name: "Travis Favors", position: "Programmer" },
@@ -84,7 +85,8 @@ async function seedData() {
       {
         name: "Kyle LeMaster",
         position: "Project Producer & Designer",
-        image_path: "/Assets/UserImages/Kyle.jpg",
+        image_path:
+          "https://sxmpleimages.s3.us-east-2.amazonaws.com/UserImages/Kyle.jpg",
       },
       { name: "Allen Opperman", position: "Designer & Audio" },
       {
