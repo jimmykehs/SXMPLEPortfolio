@@ -1,4 +1,9 @@
+#Projects {
+  background-color: #eee;
+}
+
 .Project-Card {
+  background-color: #eee;
   display: flex;
   flex-direction: column;
   height: auto;
@@ -12,7 +17,7 @@
     flex-wrap: wrap;
     height: 50vh;
     overflow-x: scroll;
-
+    background-color: #f6f8f2;
     img,
     iframe {
       height: 100%;
@@ -71,7 +76,7 @@
 @media screen and (min-width: 1024px) {
   .Project-Card {
     flex-direction: row;
-    background-color: white;
+    background-color: #eee;
     width: 100%;
 
     .Project-Media {

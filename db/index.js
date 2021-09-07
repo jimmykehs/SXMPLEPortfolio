@@ -108,7 +108,7 @@ async function createAdmin({ username, password }) {
 }
 async function createMember(
   { name, position = "Team Member" },
-  image_path = "Assets/UserImages/DefaultProfile.jpg"
+  image_path = "https://sxmpleimages.s3.us-east-2.amazonaws.com/UserImages/DefaultProfile.jpg"
 ) {
   try {
     console.log(image_path);

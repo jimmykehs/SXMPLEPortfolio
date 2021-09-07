@@ -9,31 +9,32 @@ const {
 } = require("../../db");
 const requireUser = require("../Utils");
 
-const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/Assets/UserImages");
-  },
-  filename: (req, file, cb) => {
-    const uniquePrefix = Date.now() + "-" + Math.round(Math.random() * 1000);
-    cb(null, uniquePrefix + "-" + file.originalname);
-  },
+var aws = require("aws-sdk");
+var multer = require("multer");
+var multerS3 = require("multer-s3");
+
+aws.config.update({
+  secretAccessKey: process.env.secretAccessKey,
+  accessKeyId: process.env.accessKeyId,
+  region: process.env.region,
 });
-const upload = multer({
-  storage: storage,
-  fileFilter: (req, file, cb) => {
-    if (
-      file.mimetype == "image/png" ||
-      file.mimetype == "image/jpg" ||
-      file.mimetype == "image/jpeg"
-    ) {
-      cb(null, true);
-    } else {
-      cb(null, false);
-      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
-    }
-  },
+s3 = new aws.S3();
+const userImagesURL =
+  "https://sxmpleimages.s3.us-east-2.amazonaws.com/UserImages/";
+let fileName;
+
+var upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: `${process.env.bucket}/UserImages`,
+    key: function (req, file, cb) {
+      console.log(file);
+      fileName = Date.now() + file.originalname;
+      cb(null, fileName); //use Date.now() for unique file keys
+    },
+  }),
 });
+
 membersRouter.get("/", async (req, res, next) => {
   try {
     const allMembers = await getAllMembers();
@@ -51,8 +52,7 @@ membersRouter.post(
     try {
       let newMember;
       if (req.file) {
-        const newPath = req.file.path.slice(7);
-        newMember = await createMember(req.body, newPath);
+        newMember = await createMember(req.body, userImagesURL + fileName);
       } else {
         newMember = await createMember(req.body);
       }
@@ -79,21 +79,21 @@ membersRouter.patch(
   async (req, res, next) => {
     try {
       const { name, position } = req.body;
-
+      if (name === "Error") {
+        throw new Error("You messed up");
+      }
       let userData = {
         name,
         position,
       };
       if (req.file) {
-        const newPath = req.file.path.slice(7);
-        userData.image_path = newPath;
+        userData.image_path = userImagesURL + fileName;
       }
       const { memberID } = req.params;
 
       const updatedMember = await updateMember(memberID, userData);
       res.send(updatedMember);
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }

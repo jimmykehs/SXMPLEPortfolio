@@ -6,7 +6,7 @@ import {
   Link,
   useRouteMatch,
 } from "react-router-dom";
-import AddMember from "./AddMember";
+import AddMember from "./AddMembers/AddMembers.js";
 import AddProject from "./AddProject/index.js";
 import EditMembers from "./EditMembers/EditMembers.js";
 

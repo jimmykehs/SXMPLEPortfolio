@@ -11499,7 +11499,7 @@ fieldset:disabled .btn {
 }
 
 section {
-  padding: 15px 0;
+  padding: 15px 0px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;

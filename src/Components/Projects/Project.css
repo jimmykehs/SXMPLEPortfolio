@@ -1,4 +1,9 @@
+#Projects {
+  background-color: #eee;
+}
+
 .Project-Card {
+  background-color: #eee;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,6 +29,7 @@
       flex-wrap: wrap;
   height: 50vh;
   overflow-x: scroll;
+  background-color: #f6f8f2;
 }
 
 .Project-Card .Project-Media img,
@@ -98,7 +104,7 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    background-color: white;
+    background-color: #eee;
     width: 100%;
   }
   .Project-Card .Project-Media {

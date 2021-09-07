@@ -1,0 +1,144 @@
+.Create-Project-Form {
+  background: #eee;
+  padding: 20px;
+  width: 95vw;
+  margin: 15px;
+}
+
+.Create-Project-Form h1 {
+  padding: 0;
+}
+
+.Create-Project-Form .GeneralInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Create-Project-Form .GeneralInfo input,
+.Create-Project-Form .GeneralInfo textarea {
+  width: 100%;
+  padding: 5px;
+  margin: 5px;
+}
+
+.Create-Project-Form .MembersListContainer {
+  padding: 5px;
+}
+
+.Create-Project-Form .MembersListContainer .MembersList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 250px;
+  width: 100%;
+}
+
+.Create-Project-Form .MembersListContainer .MembersList .MemberInput {
+  width: 50%;
+}
+
+.Create-Project-Form .MembersListContainer .MembersList .MemberInput label {
+  padding: 5px;
+}
+
+.Create-Project-Form .CustomFields div {
+  margin: 15px 0;
+}
+
+.Create-Project-Form .CustomFields div .TempMembers,
+.Create-Project-Form .CustomFields div .VideoUrls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.Create-Project-Form .CustomFields div .TempMembers .TempMember,
+.Create-Project-Form .CustomFields div .TempMembers .VideoUrl,
+.Create-Project-Form .CustomFields div .VideoUrls .TempMember,
+.Create-Project-Form .CustomFields div .VideoUrls .VideoUrl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+}
+
+.Create-Project-Form .CustomFields div .TempMembers .TempMember p,
+.Create-Project-Form .CustomFields div .TempMembers .VideoUrl p,
+.Create-Project-Form .CustomFields div .VideoUrls .TempMember p,
+.Create-Project-Form .CustomFields div .VideoUrls .VideoUrl p {
+  margin: 0;
+}
+
+.Create-Project-Form .CustomFields div .TempMembers .TempMember button,
+.Create-Project-Form .CustomFields div .TempMembers .VideoUrl button,
+.Create-Project-Form .CustomFields div .VideoUrls .TempMember button,
+.Create-Project-Form .CustomFields div .VideoUrls .VideoUrl button {
+  background: #444444;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  width: 30px;
+  border: 3px solid black;
+  border-radius: 100%;
+  color: #eee;
+  margin-right: 10px;
+}
+
+.Create-Project-Form .CustomFields div .TempMembers .TempMember button:hover,
+.Create-Project-Form .CustomFields div .TempMembers .VideoUrl button:hover,
+.Create-Project-Form .CustomFields div .VideoUrls .TempMember button:hover,
+.Create-Project-Form .CustomFields div .VideoUrls .VideoUrl button:hover {
+  background: #e94e3a;
+  color: white;
+}
+
+.Create-Project-Form input[type="submit"] {
+  padding: 10px;
+  width: 25%;
+}
+
+#ImageForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+/*# sourceMappingURL=AddProject.css.map */
