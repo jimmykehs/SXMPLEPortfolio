@@ -131,10 +131,10 @@ const AddProject = ({ token, members }) => {
           />
           <AddVideos URLS={URLS} setURLS={setURLS} />
         </div>
-        {/* <AddPhotos
+        <AddPhotos
           setProjectPhotos={setProjectPhotos}
           projectPhotos={projectPhotos}
-        /> */}
+        />
         <input type="submit" value="Submit" />
       </form>
     </div>

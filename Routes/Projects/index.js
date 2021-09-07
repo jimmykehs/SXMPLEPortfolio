@@ -8,17 +8,31 @@ const {
   addProjectPhotos,
 } = require("../../db");
 
-const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/Assets/ProjectImages");
-  },
-  filename: (req, file, cb) => {
-    const uniquePrefix = Date.now() + "-" + Math.round(Math.random() * 1000);
-    cb(null, uniquePrefix + "-" + file.originalname);
-  },
+var aws = require("aws-sdk");
+var multer = require("multer");
+var multerS3 = require("multer-s3");
+
+aws.config.update({
+  secretAccessKey: process.env.secretAccessKey,
+  accessKeyId: process.env.accessKeyId,
+  region: process.env.region,
 });
-const upload = multer({ storage });
+s3 = new aws.S3();
+const projectImagesURL =
+  "https://sxmpleimages.s3.us-east-2.amazonaws.com/ProjectImages/";
+let fileName;
+
+var upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: `${process.env.bucket}/ProjectImages`,
+    key: function (req, file, cb) {
+      console.log(file);
+      fileName = Date.now() + file.originalname;
+      cb(null, fileName); //use Date.now() for unique file keys
+    },
+  }),
+});
 
 projectsRouter.get("/", async (req, res, next) => {
   try {
@@ -59,8 +73,8 @@ projectsRouter.post(
       const { id } = req.params;
       let newPhotos = [];
       req.files.forEach(async (file) => {
-        const newPath = file.path.slice(6);
-        const newMedia = await addProjectPhotos(id, newPath);
+        console.log(file);
+        const newMedia = await addProjectPhotos(id, file.location);
         newPhotos.push(newMedia);
         if (newPhotos.length === req.files.length) {
           res.send(newPhotos);
