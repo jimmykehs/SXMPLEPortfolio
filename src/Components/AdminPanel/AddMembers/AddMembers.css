@@ -39,8 +39,8 @@
   color: #eee;
   border-radius: 5px;
   margin: 20px 0;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
+  -webkit-transition: all 0.33s ease;
+  transition: all 0.33s ease;
 }
 
 .Create-Member-Form button:hover {

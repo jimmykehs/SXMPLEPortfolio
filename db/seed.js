@@ -171,4 +171,6 @@ async function rebuildDB() {
   }
 }
 
-rebuildDB();
+// rebuildDB();
+
+module.exports = { rebuildDB };

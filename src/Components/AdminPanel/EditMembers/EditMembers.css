@@ -58,6 +58,7 @@
   width: 100px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 12px;
 }
 
 .editMember .editPFP label {
