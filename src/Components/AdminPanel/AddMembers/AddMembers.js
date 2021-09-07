@@ -7,12 +7,13 @@ const AddMember = ({ token, setMembers }) => {
   const [memberName, setMemberName] = useState("");
   const [memberPosition, setMemberPosition] = useState("");
   const [memberPhoto, setMemberPhoto] = useState({});
-  const [success, setSuccess] = useState("");
+  const [requestStatus, setRequestStatus] = useState({
+    backgroundColor: "blue",
+  });
   return (
     <div className="Create-Member-Form">
       <h1>Add Team Members</h1>
-      <p>{success}</p>
-      <Form
+      <form
         onSubmit={(e) => {
           e.preventDefault();
           const userData = new FormData();
@@ -26,53 +27,54 @@ const AddMember = ({ token, setMembers }) => {
             .then(async () => {
               setMemberName("");
               setMemberPosition("");
-              setSuccess("User has been added!");
               const allMembers = await getMembers();
               allMembers.sort((a, b) => {
                 return a.sortnumber - b.sortnumber;
               });
               setMembers(allMembers);
+              setRequestStatus({ backgroundColor: "rgb(53, 170, 59)" });
+            })
+            .catch((err) => {
+              setRequestStatus({ backgroundColor: "red" });
+              console.error(err);
+            })
+            .finally(() => {
+              setTimeout(() => {
+                setRequestStatus({ backgroundColor: "blue" });
+              }, 1000);
             });
         }}
       >
-        <Form.Group className="mb-3" controlId="formBasicText">
-          <Form.Control
-            type="text"
-            placeholder="Member Name"
-            value={memberName}
-            onChange={(e) => {
-              setMemberName(e.target.value);
-            }}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicText">
-          <Form.Control
-            type="text"
-            placeholder="Position(s)"
-            value={memberPosition}
-            onChange={(e) => {
-              setMemberPosition(e.target.value);
-            }}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="ImageForm" className="mb-3">
-          <Form.Label>
-            User Image (If none selected, default photo will be used)
-          </Form.Label>
-          <Form.Control
-            type="file"
-            onChange={(e) => {
-              setMemberPhoto(e.target.files[0]);
-            }}
-          />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+        <input
+          required
+          type="text"
+          placeholder="Member Name"
+          value={memberName}
+          onChange={(e) => {
+            setMemberName(e.target.value);
+          }}
+        />
+        <input
+          required
+          type="text"
+          placeholder="Position(s)"
+          value={memberPosition}
+          onChange={(e) => {
+            setMemberPosition(e.target.value);
+          }}
+        />
+        <label htmlFor="PFPUpload">
+          User Image (If none selected, default photo will be used)
+        </label>
+        <input
+          id="PFPUpload"
+          type="file"
+          onChange={(e) => {
+            setMemberPhoto(e.target.files[0]);
+          }}
+        />
+        <button style={requestStatus}>Submit</button>
+      </form>
     </div>
   );
 };

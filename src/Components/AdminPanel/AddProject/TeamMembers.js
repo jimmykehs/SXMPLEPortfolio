@@ -18,7 +18,7 @@ const TeamMembers = ({ members, selectedMembers, setSelectedMembers }) => {
       <div className="MembersList">
         {members.map((member) => {
           return (
-            <div className="MemberInput">
+            <div key={member.id} className="MemberInput">
               <input
                 id={`Member${member.id}`}
                 type="checkbox"
