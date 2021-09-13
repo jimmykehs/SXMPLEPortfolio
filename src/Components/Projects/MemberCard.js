@@ -22,7 +22,7 @@ const MemberCard = ({ member }) => {
           src={
             member.image_path
               ? member.image_path
-              : "Assets/UserImages/DefaultProfile.jpg"
+              : "https://sxmpleimages.s3.us-east-2.amazonaws.com/UserImages/DefaultProfile.jpg"
           }
           ref={target}
           onClick={() => setShow(!show)}
